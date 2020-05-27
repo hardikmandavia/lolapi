@@ -17,8 +17,8 @@ export default class Participant {
   @Field(type => ParticipantStats)
   stats:	ParticipantStats;
 
-  @Field(type => ParticipantTimeline)
-  timeline: ParticipantTimeline;
+  // @Field(type => ParticipantTimeline)
+  // timeline: ParticipantTimeline;
 
   @Field()
   teamId: number; // 100 for blue side. 200 for red side.

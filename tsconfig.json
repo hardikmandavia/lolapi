@@ -2,9 +2,11 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "lib": ["dom", "es2016", "esnext.asynciterable"],
+    "lib": ["dom", "es6"],
     "moduleResolution": "node",
-    "outDir": "./dist",
+    "outDir": "dist",
+    "rootDir": "src",
+    "removeComments": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "sourceMap": true,
@@ -12,5 +14,6 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*"]
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"],
 }
