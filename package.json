@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server",
-    "build": "webpack --config webpack.$NODE_ENV.js"
+    "build": "webpack --config webpack.$NODE_ENV.js",
+    "build:dev": "NODE_ENV=development npm run build",
+    "build:prod": "NODE_ENV=production npm run build"
   },
   "keywords": [],
   "author": "",
