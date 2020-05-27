@@ -1,8 +1,9 @@
-import { ApolloServer, IResolvers } from 'apollo-server';
+import { ApolloServer, IResolvers } from "apollo-server";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 
-import * as resolvers from './resolvers';
+import { environment } from "./environment";
+import * as resolvers from "./resolvers";
 
 async function bootstrap() {
   const schema = await buildSchema({
@@ -10,14 +11,18 @@ async function bootstrap() {
     emitSchemaFile: true
   });
 
-  const server = new ApolloServer({schema});
+  const { introspection, playground } = environment.apollo;
+  const server = new ApolloServer({
+    schema,
+    introspection,
+    playground
+  });
 
-  server.listen()
-    .then(({ url }) => console.log(`Server ready at ${url} `));
+  server.listen(environment.port).then(({ url }) => console.log(`Server ready at ${url} `));
 
-  if(module.hot) {
+  if (module.hot) {
     module.hot.accept();
-    module.hot.dispose(() => console.log('Module disposed. '));
+    module.hot.dispose(() => console.log("Module disposed. "));
   }
 }
 
